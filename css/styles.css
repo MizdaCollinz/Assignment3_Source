@@ -48,16 +48,20 @@ nav {
 }
 /* Footer*/
 footer{
-    margin: 5px auto;
-    width:98%;
-    height:100px;
-    position:fixed;
+    margin: 0 auto;
+    width:100%;
+    border: 1px #ddd solid;
+}
+
+#logout {
+    position: relative;
+    bottom:0px;
 }
 
 /* Main Menu */
 
 #mainContainer {
-    border: 2px gainsboro solid;
+    border: 0px gainsboro solid;
     height:550px;
     width:98%;
     min-width:500px;
@@ -85,10 +89,7 @@ footer{
     height:200px;
 }
 
-table,th,td{
-    
-}
-th{
+.table-bordered th{
     padding:2px;
     text-align: center;
     font-size:36px;
