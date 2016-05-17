@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    
     <head>
     <title>XYZ Home Automation System</title>
         
@@ -35,13 +36,13 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Doors &amp; Windows</td>
+                            <td><a>Doors &amp; Windows</a></td>
                         </tr>
                         <tr>
-                            <td>Temperature</td>
+                            <td><a>Temperature</a></td>
                         </tr>
                         <tr>
-                            <td>Lighting &amp; Blinds</td>
+                            <td><a>Lighting &amp; Blinds</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -52,19 +53,20 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>View</th>
+                            <th onclick="expandFunction()" id="viewButton">View                    
+                            </th>
                         </tr>
                     </thead>
                     
                     <tbody>
                          <tr>
-                            <td>Surveillance Feeds</td>
+                             <td><a>Surveillance Feeds</a></td>
                         </tr>
                         <tr>
-                            <td>Motion Sensing</td>
+                            <td><a>Motion Sensing</a></td>
                         </tr>
                         <tr>
-                            <td>Energy Data</td>
+                            <td><a>Energy Data</a></td>
                         </tr>
                     </tbody>
                    
@@ -77,17 +79,20 @@
     
         <footer class="footer">
             <div class="container">
-                <span class="pull-left ">
-                    Scheduler Icon
+                <span class="pull-left" id="Schedule">
+                   <span class="glyphicon glyphicon-time"></span> Schedule
                     
                 </span>
                 
                 
-                <span>Pina potato to your mom</span>
-                                
-                <span class="pull-right" id="logout">
-                    Logout   <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                </span>
+                <small>&copy; XYZ ltd</small>
+                <a href="#">          
+                    <span class="pull-right" id="logout">
+                        Logout 
+                        <span id="bob" class="glyphicon glyphicon-user" aria-hidden="true" style="padding-left:2px;"></span>
+                    </span>
+                </a>          
+                          
                 
             </div>    
         </footer>
@@ -96,6 +101,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <!-- Bootstrap JS -->
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/script.js"></script>
     
     </body>
 
