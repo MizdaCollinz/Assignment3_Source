@@ -7,6 +7,7 @@
     text-shadow: 2px 2px 2px black;
 }
 
+/* Links */
 a,a:visited,a:hover,a:active,a:link{
     color:white;
     text-decoration: none;
@@ -27,6 +28,7 @@ a:link{
 
 body {
     background: linear-gradient(to bottom right,#696969,#d3d3d3);
+    height: 900px;
 }
 
 /* Top Nav-Bar */
@@ -75,10 +77,12 @@ nav {
 footer{
     margin: 0 auto;
     width:100%;
-    height:50px;
+    height:60px;
     border: 1px #ddd solid;
     background-color:#3f3f3f;
-    line-height: 50px;
+    line-height: 60px;
+    position: fixed;
+    bottom:0;
 }
 
 #Schedule{
@@ -110,9 +114,13 @@ footer{
     top:5px;
 }
 
-#Steve{
+#Steve{ /*Label*/
     position:relative;
     top:-2px;
+}
+.label{
+    background-color:#3f3f3f;
+    font-size:28px;
 }
 
 .MenuSet{
@@ -133,30 +141,78 @@ footer{
     font-size:36px;
 
 }
-.table-bordered td{
-    background-color: #BD3E2A;
-}
+
 
 #ControlMenu {
    margin-top:20px;
 }
 
 #ControlMenu table th{
+    height:250px;
+    line-height:250px;
     background-color: #337487;
 }
-#ControlMenu table td{
-    background-color: #518B9C;
-}
+
 #ViewMenu table th{
+    height:250px;
+    line-height:250px;
     background-color: #336F12;
 }
-#ViewMenu table td{
+.ViewMenuTD{
     background-color: #549431;
+    display:none;
+    opacity:0;
+}
+.ControlMenuTD{
+    background-color: #518B9C;
+    opacity:0;
+    display:none;
 }
 
-.label{
-    background-color:#3f3f3f;
-    font-size:28px;
+/*Animations on Main Menu*/
+@keyframes shrinkth{
+    from{
+        line-height: 250px;
+        height:250px;
+    }
+    to{
+        line-height:60px;
+        height: 60px;  
+    }
+    
 }
+
+@keyframes shrinkth-reverse{
+    from{
+        line-height: 60px;
+        height:60px;
+    }
+    to{
+        line-height:250px;
+        height: 250px;  
+    }
+    
+}
+
+@keyframes expandtd{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:100;
+    }
+}
+
+@keyframes expandtd-reverse{
+    from{
+        opacity:100;
+    }
+    to{
+        opacity:0;
+    }
+}
+
+
+
 
 
