@@ -1,5 +1,6 @@
 var isViewExpanded = false;
 var isControlExpanded = false;
+var isScheduleExpanded = false;
 
 function expandFunctionView() {
     
@@ -56,8 +57,25 @@ function expandFunctionControl() {
     
 }
 
-function hoverControl(){
-    
+function expandSchedule(){
+    if(isScheduleExpanded === false){
+        var elements = document.querySelectorAll('.scheduleEntry');
+        for(var i=0; i<elements.length; i++){
+            elements[i].style.display="inline-block";
+            elements[i].style.animation="expandtd 2s linear 0s forwards";
+        }
+        isScheduleExpanded=true;
+    } else{
+         var elements = document.querySelectorAll('.scheduleEntry');
+        for(var i=0; i<elements.length; i++){
+            elements[i].style.animation="expandtd-reverse 2s linear 0s forwards";
+        }
+        for(var i=0; i<elements.length; i++){
+            elements[i].style.display="none";
+        }
+        isScheduleExpanded=false;
+    }
 }
+
 
 
