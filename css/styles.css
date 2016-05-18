@@ -17,8 +17,9 @@ a span:hover > #bob, a span:hover, #Schedule:hover, #Schedule:hover > #ScheduleI
   background-color:white;
   color:black;
   text-shadow: none;
+  cursor: pointer;
 }
-a:active{
+a:active,#Schedule:active{
     position: relative;
     top:2px;
 }
@@ -299,5 +300,7 @@ footer{
   transform: scale(0.9);
 }
 
+
+/* ----------Temperature page CSS------------------*/
 
 

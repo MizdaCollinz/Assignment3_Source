@@ -18,66 +18,20 @@
     
     <body>
         
-        
         <nav>
             <div class="Navigation" id="mainLogo"> XYZ</div>
             <div class="Navigation" id="mainTitle"> Main Menu </div>     
         </nav>
         
-        <div id="mainContainer">
-            
-            <h2> Welcome <span id="Steve" class="label label-default">Steve</span> !</h2>
-            
-            <section id="ControlMenu" class="MenuSet">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th class="hvr-ripple-out" onclick="expandFunctionControl()" id="controlButton">Control</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="ControlMenuTD hvr-shrink"><a>Doors &amp; Windows</a></td>
-                        </tr>
-                        <tr>
-                            <td class="ControlMenuTD hvr-shrink"><a>Temperature</a></td>
-                        </tr>
-                        <tr>
-                            <td class="ControlMenuTD hvr-shrink"><a>Lighting &amp; Blinds</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            
-            </section><!--ControlMenu-->
-            
-            <section id="ViewMenu" class="MenuSet">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th  class="hvr-ripple-out" onclick="expandFunctionView()" id="viewButton">View                    
-                            </th>
-                        </tr>
-                    </thead>
-                    
-                    <tbody>
-                         <tr>
-                             <td class="ViewMenuTD hvr-shrink"><a>Surveillance Feeds</a></td>
-                        </tr>
-                        <tr>
-                            <td class="ViewMenuTD hvr-shrink"><a>Motion Sensing</a></td>
-                        </tr>
-                        <tr>
-                            <td class="ViewMenuTD hvr-shrink"><a>Energy Data</a></td>
-                        </tr>
-                    </tbody>
-                   
-                
-                </table>
-            </section><!--ViewMenu-->
-            
-        </div><!-- mainContainer-->
-    
-    
+        <div id="sidebar">
+            <ul>
+                <li id="sidebarTitle">Control</li>
+                <li>Doors &amp; Windows</li>
+                <li>Temperature</li>
+                <li>Lighting &amp; Blinds</li>
+            </ul>
+        </div>
+        
         <footer class="footer">
             <div class="container">
                 <span onclick="expandSchedule()" class="pull-left" id="Schedule">
@@ -116,15 +70,11 @@
                 
             </div>    
         </footer>
-        
-        <!-- jQuery -->
+         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <!-- Bootstrap JS -->
         <script src="js/bootstrap.min.js"></script>
         <script src="js/script.js"></script>
-    
     </body>
-
-    
     
 </html>
