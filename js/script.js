@@ -2,6 +2,55 @@ var isViewExpanded = false;
 var isControlExpanded = false;
 var isScheduleExpanded = false;
 
+
+$(document).ready(function(){
+
+   $("[name='toggleBox']").bootstrapSwitch();/*Bootstrap Switch*/
+   $('[data-toggle="tooltip"]').tooltip();/*Bootstrap Tooltip*/
+    
+    /*Bootstrap Slider*/
+    $('#kitchenSlider').slider({
+        formatter: function(value) {
+            return 'Current value: ' + value;
+        }
+    });
+    
+    $('#bath1Slider').slider({
+        formatter: function(value) {
+            return 'Current value: ' + value;
+        }
+    });
+    
+    $('#bath2Slider').slider({
+        formatter: function(value) {
+            return 'Current value: ' + value;
+        }
+    });
+    $('#kitchenSliderB').slider({
+        formatter: function(value) {
+            return 'Current value: ' + value;
+        }
+    });
+    $('#loungeSliderB').slider({
+        formatter: function(value) {
+            return 'Current value: ' + value;
+        }
+    });
+    $('#bedroomSliderB').slider({
+        formatter: function(value) {
+            return 'Current value: ' + value;
+        }
+    });
+    $('#diningSliderB').slider({
+        formatter: function(value) {
+            return 'Current value: ' + value;
+        }
+    });
+
+});
+
+
+
 function expandFunctionView() {
     
     if (isViewExpanded === false) {
@@ -76,6 +125,11 @@ function expandSchedule(){
         isScheduleExpanded=false;
     }
 }
+
+
+
+
+
 
 
 

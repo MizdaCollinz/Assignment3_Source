@@ -11,6 +11,10 @@
         <!-- Google Fonts-->
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script|Armata' rel='stylesheet' type='text/css'> 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+        <!--Bootstrap-Switch-->
+    <link href="bootstrap-switch-master/dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
+    <link href="bootstrap-slider-master/dist/css/bootstrap-slider.css" rel="stylesheet">
+   
     
     
     </head>
@@ -19,30 +23,160 @@
     <body>
         
         <nav>
-            <div class="Navigation" id="mainLogo2"> XYZ</div>
-            <div class="Navigation" id="mainTitle2"> Control Menu </div> 
-            <div class="Navigation" id="backButton"></div>
+            <div class="Navigation" id="mainLogo"> XYZ</div>
+            <div class="Navigation" id="mainTitle"> Temperature </div> 
         </nav>
         <div id="wrapper">
             <div id="sidebar">
-            <ul>
-                <li id="sidebarTitle">Control</li>
-                <a href="#"><li>Doors &amp; Windows</li></a>
-                <a href="#"><li>Temperature</li></a>
-                <a href="#"><li>Lighting &amp; Blinds</li></a>
-            </ul>
+                <ul>
+                    <li id="sidebarTitle">Control</li>
+                    <a href="#"><li class="sidebarEntry">Doors &amp; Windows</li></a>
+                    <li id="sidebarMain">Temperature</li>
+                    <a href="#"><li class="sidebarEntry">Lighting &amp; Blinds</li></a>
+                    <a href="index.html"><li id="sidebarFooter">Back to Main</li></a>
+                </ul>
             </div>
-            
+            <div id="filler"></div>
             <div id="tempInterface">
-            
+                <table>
+                    <tr class="HeaderRow"><!--Header Row-->
+                        <td class="titleColumn">Underfloor</td>
+                        <td class="statusColumn">Current</td>
+                        <td class="toggleColumn" >Status
+                        <span data-toggle="tooltip" title="This on/off option is independent of the Apply functionality." class="glyphicon glyphicon-info-sign black-tooltip" placement="top"></span></td>
+                        <td class="sliderColumn">New Temperature</td>
+                        <td class="schedColumn">Schedule</td>
+                        <td class="applyColumn">Apply</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="titleColumn">Kitchen</td>
+                        <td class="statusColumn">18°C</td>
+                        <td class="toggleColumn">
+                            <input type="checkbox" name="toggleBox" checked>
+                        </td>
+                        <td class="sliderColumn">
+                            <input id="kitchenSlider" data-slider-id='kitchenSlider' type="text" data-slider-min="15" data-slider-max="25" data-slider-step="1" data-slider-value="18"/>
+                        </td>
+                        <td class="schedColumn">
+                            <span class="glyphicon glyphicon-time"></span>
+                        </td>
+                        <td class="applyColumn">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="titleColumn">Bathroom 1</td>
+                        <td class="statusColumn">18°C</td>
+                        <td class="toggleColumn"><input type="checkbox" name="toggleBox"></td>
+                        <td class="sliderColumn">
+                            <input id="bath1Slider" data-slider-id='kitchenSlider' type="text" data-slider-min="15" data-slider-max="25" data-slider-step="1" data-slider-value="18"/>
+                        </td>
+                        <td class="schedColumn">
+                            <span class="glyphicon glyphicon-time"></span>
+                        </td>
+                        <td class="applyColumn">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="titleColumn">Bathroom 2</td>
+                        <td class="statusColumn">18°C</td>
+                        <td class="toggleColumn"><input type="checkbox" name="toggleBox" checked></td>
+                        <td class="sliderColumn">
+                            <input id="bath2Slider" data-slider-id='kitchenSlider' type="text" data-slider-min="15" data-slider-max="25" data-slider-step="1" data-slider-value="18"/>
+                        </td>
+                       <td class="schedColumn">
+                            <span class="glyphicon glyphicon-time"></span>
+                        </td>
+                        <td class="applyColumn">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </td>
+                    </tr>
+                    
+                    <tr class="HeaderRow"><!--Header Row-->
+                        <td class="titleColumn">Air Conditioning</td>
+                        <td class="statusColumn"></td>
+                        <td class="toggleColumn"></td>
+                        <td class="sliderColumn"></td>
+                        <td class="schedColumn"></td>
+                        <td class="applyColumn"></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="titleColumn">Kitchen</td>
+                        <td class="statusColumn">15°C</td>
+                        <td class="toggleColumn"><input type="checkbox" name="toggleBox" checked></td>
+                        <td class="sliderColumn">
+                            <input id="kitchenSliderB" data-slider-id='kitchenSlider' type="text" data-slider-min="15" data-slider-max="30" data-slider-step="1" data-slider-value="15"/>
+                        </td>
+                        <td class="schedColumn">
+                            <span class="glyphicon glyphicon-time"></span>
+                        </td>
+                        <td class="applyColumn">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="titleColumn">Lounge</td>
+                        <td class="statusColumn">21°C</td>
+                        <td class="toggleColumn"><input type="checkbox" name="toggleBox"></td>
+                        <td class="sliderColumn">
+                            <input id="loungeSliderB" data-slider-id='kitchenSlider' type="text" data-slider-min="15" data-slider-max="30" data-slider-step="1" data-slider-value="21"/>
+                        </td>
+                        <td class="schedColumn">
+                            <span class="glyphicon glyphicon-time"></span>
+                        </td>
+                        <td class="applyColumn">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="titleColumn">Bedroom</td>
+                        <td class="statusColumn">24°C</td>
+                        <td class="toggleColumn">
+                            <input type="checkbox" name="toggleBox" checked>
+                        </td>
+                        <td class="sliderColumn">
+                            <input id="bedroomSliderB" data-slider-id='kitchenSlider' type="text" data-slider-min="15" data-slider-max="30" data-slider-step="1" data-slider-value="24"/>
+                        </td>
+                        <td class="schedColumn">
+                            <span class="glyphicon glyphicon-time"></span>
+                        </td>
+                        <td class="applyColumn">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="titleColumn">Dining Room</td>
+                        <td class="statusColumn">20°C</td>
+                        <td class="toggleColumn">
+                            <input type="checkbox" name="toggleBox">
+                        </td>
+                        <td class="sliderColumn">
+                            <input id="diningSliderB" data-slider-id='kitchenSlider' type="text" data-slider-min="15" data-slider-max="30" data-slider-step="1" data-slider-value="20"/>
+                        </td>
+                        <td class="schedColumn">
+                            <span class="glyphicon glyphicon-time"></span>
+                        </td>
+                        <td class="applyColumn">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </td>
+                    </tr>
+                </table>
             </div>
         
         </div>
         
         
-        <footer class="footer">
+        <footer>
             <div class="container">
-                <span onclick="expandSchedule()" class="pull-left" id="Schedule">
+                <span onclick="expandSchedule()" id="Schedule">
                    <span id="ScheduleIcon" class="glyphicon glyphicon-time"></span> Schedule
                 </span><!--Schedule-->
                 <span class="pull-left">
@@ -69,7 +203,7 @@
                 
                 
                 <a href="#">          
-                    <span class="pull-right" id="logout">
+                    <span id="logout">
                         Logout 
                         <span id="bob" class="glyphicon glyphicon-user" aria-hidden="true" style="padding-left:2px;"></span>
                     </span><!--logout-->
@@ -83,6 +217,8 @@
         <!-- Bootstrap JS -->
         <script src="js/bootstrap.min.js"></script>
         <script src="js/script.js"></script>
+         <script src="bootstrap-switch-master/dist/js/bootstrap-switch.js"></script>
+        <script src="bootstrap-slider-master/dist/bootstrap-slider.js"></script>
     </body>
     
 </html>
