@@ -3,54 +3,6 @@ var isControlExpanded = false;
 var isScheduleExpanded = false;
 
 
-$(document).ready(function(){
-
-   $("[name='toggleBox']").bootstrapSwitch();/*Bootstrap Switch*/
-   $('[data-toggle="tooltip"]').tooltip();/*Bootstrap Tooltip*/
-    
-    /*Bootstrap Slider*/
-    $('#kitchenSlider').slider({
-        formatter: function(value) {
-            return 'Current value: ' + value;
-        }
-    });
-    
-    $('#bath1Slider').slider({
-        formatter: function(value) {
-            return 'Current value: ' + value;
-        }
-    });
-    
-    $('#bath2Slider').slider({
-        formatter: function(value) {
-            return 'Current value: ' + value;
-        }
-    });
-    $('#kitchenSliderB').slider({
-        formatter: function(value) {
-            return 'Current value: ' + value;
-        }
-    });
-    $('#loungeSliderB').slider({
-        formatter: function(value) {
-            return 'Current value: ' + value;
-        }
-    });
-    $('#bedroomSliderB').slider({
-        formatter: function(value) {
-            return 'Current value: ' + value;
-        }
-    });
-    $('#diningSliderB').slider({
-        formatter: function(value) {
-            return 'Current value: ' + value;
-        }
-    });
-
-});
-
-
-
 function expandFunctionView() {
     
     if (isViewExpanded === false) {
@@ -126,8 +78,99 @@ function expandSchedule(){
     }
 }
 
+function retrieveTime(){
+    var datePicker = document.getElementById('calendar');
+    var timePicker = document.getElementById('clock');
+    
+    if(datePicker.validity.badInput){
+        alert("Error: Please confirm using a valid date");
+        return false;
+    }
+    if(timePicker.validity.badInput){
+        alert("Error: Please confirm using a valid time");
+        return false;
+    }
+    
+    var date = isToday(datePicker.value);
+    if(date == false){
+        alert("Error: This date has already past");
+        return false;
+    } else{
+        room1.date= date;
+    }
+    room1.time = toTwelveHour(timePicker.value);
+    room1.queue = true;
+    
+    $('#modalScheduler').modal('hide');
+    alert(room1.date + " and " + room1.time);
+    return false;
+}
 
+function applyRoom1(){
+        
+    if (room1.queue == true) {
+        room1.queue = false;
+        room1.change = false;
+        var scheduleEntry = document.createElement("span");
+        
+        var glyphIcon = document.createElement("span");
+        glyphIcon.setAttribute("class","glyphicon glyphicon-fire");
+        
+        scheduleEntry.appendChild(glyphIcon);
+        scheduleEntry.setAttribute("data-toggle","tooltip");
+        var tooltipString = room1.room + " - " + room1.type + " - " + room1.date + " - " +room1.time + " - " + room1.temp;
+        scheduleEntry.setAttribute("title",tooltipString);
+        scheduleEntry.setAttribute("class","scheduleEntry");
+        
+        document.getElementById('entryWrapper').appendChild(scheduleEntry);
+        
+        $('[data-toggle="tooltip"]').tooltip();/*Bootstrap Tooltip - Re-load*/
+        isScheduleExpanded=false;
+        expandSchedule();
+    }
+    else if(room1.change === true){
+        room1.change = false;
+        document.getElementById('kitchenStatus').innerHTML = room1.temp;
+    }
 
+}
+
+function toTwelveHour(string){
+    var hour = string.split(':')[0];
+    var minutes = string.split(':')[1];
+    if (hour > 12 ){
+        var suffix = "pm"
+        hour = hour-12;
+    }else if(hour === 12){
+        var suffix = "pm"
+    }else{
+        var suffix = "am"
+    }
+    return hour + ":"+minutes+suffix;
+    
+}
+
+function isToday(string){
+    var today = new Date();
+    var todayDay = today.getDate();
+    var todayMonth = today.getMonth();
+    
+    var month = string.split("-")[1];
+    var day = string.split("-")[2];
+    
+    if((todayDay == day) && (todayMonth + 1 == month)){
+        return "Today";
+    }
+    else if(todayMonth+1 > month){
+        return false;
+    }
+    else if(todayMonth+1 == month){
+        if(todayDay>day){
+            return false;
+        }
+    }
+    return day +"-" + month;
+}
 
 
 

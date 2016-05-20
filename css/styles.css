@@ -20,7 +20,6 @@ a span:hover > #bob, #logout:hover, #Schedule:hover, #Schedule:hover > #Schedule
   cursor: pointer;
 }
 #logout:active,#Schedule:active{
-    position: relative;
     top:2px;
 }
 
@@ -92,14 +91,21 @@ footer{
     bottom:0px;
     left:1px;
 }
+#entryWrapper{
+    display: inline-block;
+    width:80%;
+    height:40px;
+    margin:0 auto;
+}
 
 .scheduleEntry{
+     
     height:40px;
     width:40px;
     line-height: 40px;
     display:none;
     vertical-align:middle;
-    margin-left:10px;
+    margin-left:20px;
     border: 1px white solid;
     
 }
@@ -367,6 +373,18 @@ footer{
 #tempInterface table{
     width:100%;
 }
+#apply:hover{
+    cursor:pointer;
+}
+#schedIcon{
+    background-color: transparent;
+    outline: none;
+    border:none;
+}
+
+#schedIcon:hover,#apply:hover{
+    font-size: 1.5em;
+}
 
 #sidebar ul a li:hover,#sidebar ul #sidebarFooter:hover{
     color:#337487;
@@ -381,6 +399,8 @@ footer{
 #tempInterface table .HeaderRow{
     height:100px;
     background-color:#337487;
+    font-weight:bold;
+    font-size:1.1em;
 }
 
 #tempInterface table tr{
@@ -391,10 +411,6 @@ footer{
 #tempInterface table tr td{
     border-left:3px gainsboro solid;
     border-right:3px gainsboro solid;
-}
-
-.tooltip.top .tooltip-inner {
-    
 }
 
 .titleColumn{
@@ -420,3 +436,91 @@ footer{
     background-color: #BABABA;
 }
 
+
+/* Modal Window Styling*/
+
+.modal-header{
+    background-color: #3f3f3f;
+    font-weight: bold;
+    font-size:32px;
+}
+
+.modal-body{
+    background: linear-gradient(to bottom right,#696969,#d3d3d3);
+    text-align: left;
+}
+
+#dateLabel,#timeLabel{
+    font-weight: bold;
+    font-size: 24px;
+    padding:5px;
+    margin-right: 10px;
+    margin-left: 60px
+}
+
+
+#calendar, #clock{
+    position:relative;
+    left:50px;
+    color:black;
+    text-shadow: none;
+    width:200px;
+}
+
+
+#time,#date{
+    height:80px;
+    text-align: left;
+}
+#date{
+    margin-top:10px;
+}
+
+#date > span,#time > span{
+    padding:10px;
+}
+
+table tr td .adjustHour{
+    padding:2px;
+    width:50px;
+    height:20px;
+    line-height:20px;
+    text-align: center;
+}
+#dateIcon{
+    position: absolute;
+    right:20px;
+    top:30px;
+}
+
+#clockIcon{
+    position: absolute;
+    right:20px;
+    top:115px;
+}
+
+#hourContain{
+    display:inline-block;
+    position: absolute;
+    right:20px;
+}
+
+#hourContain tr td{
+    height:20px;
+    width:50px;
+    box-sizing: border-box;
+}
+
+.modal-footer{
+    text-align: center;
+    background-color: #3f3f3f;
+}
+
+.modal-footer button{
+    padding:10px;
+    margin: 0px 5px;
+    color:white;
+    background-color: #337487;
+    border-radius: 3px;
+    border:none;
+}

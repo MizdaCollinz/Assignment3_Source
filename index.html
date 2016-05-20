@@ -10,7 +10,7 @@
 	<link href="css/styles.css" rel="stylesheet">
         <!-- Google Fonts-->
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script|Armata' rel='stylesheet' type='text/css'> 
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+
     
     
     </head>
@@ -83,24 +83,24 @@
                 <span onclick="expandSchedule()" class="pull-left" id="Schedule">
                    <span id="ScheduleIcon" class="glyphicon glyphicon-time"></span> Schedule
                 </span><!--Schedule-->
-                <span class="pull-left">
-                    <span class="scheduleEntry">
-                        <span class="glyphicon glyphicon-time"></span>
+                <span id="entryWrapper">
+                    <span class="scheduleEntry black-tooltip" data-toggle="tooltip" title="Bathroom 1 - Underfloor Heating - Today - 2:00pm - 24°C" placement="top">
+                        <span class="glyphicon glyphicon-fire" ></span>
                     </span>
-                    <span class="scheduleEntry">
-                        <span class="glyphicon glyphicon-time"></span>
+                    <span class="scheduleEntry" data-toggle="tooltip" title="Front Door - Today  - 3:00pm - Unlock">
+                        <span class="glyphicon glyphicon-lock"></span>
                     </span>
-                    <span class="scheduleEntry">
-                        <span class="glyphicon glyphicon-time"></span>
+                    <span class="scheduleEntry" data-toggle="tooltip" title="Garage Door - Today - 3:00pm - Unlock">
+                        <span class="glyphicon glyphicon-lock"></span>
                     </span>
-                    <span class="scheduleEntry">
-                        <span class="glyphicon glyphicon-time"></span>
+                    <span class="scheduleEntry scheduleTooltip" data-toggle="tooltip" title="Kitchen - Blinds - Today - 4:00pm - Close">
+                        <span class="glyphicon glyphicon-menu-hamburger"></span>
                     </span>
-                    <span class="scheduleEntry">
-                        <span class="glyphicon glyphicon-time"></span>
+                    <span class="scheduleEntry" data-toggle="tooltip" title="Foyer - Lighting - Today - 4:00pm - On ">
+                        <span class="glyphicon glyphicon-certificate"></span>
                     </span>
-                    <span class="scheduleEntry">
-                        <span class="glyphicon glyphicon-time"></span>
+                    <span class="scheduleEntry" data-toggle="tooltip" title="Kitchen - Underfloor Heating - Today - 4:00pm - 25°C">
+                        <span class="glyphicon glyphicon-fire"></span>
                     </span>
                 </span><!--ExpandableSchedule-->
                 
@@ -118,7 +118,12 @@
         </footer>
         
         <!-- jQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="js/jquery-2.2.3.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('[data-toggle="tooltip"]').tooltip();/*Bootstrap Tooltip*/
+            });
+        </script>
         <!-- Bootstrap JS -->
         <script src="js/bootstrap.min.js"></script>
         <script src="js/script.js"></script>

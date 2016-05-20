@@ -2,7 +2,7 @@
 <html>
     
     <head>
-    <title>XYZ Home Automation System</title>
+    <title>Control - Temperature</title>
         
         <!-- Bootstrap and CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -10,7 +10,6 @@
 	<link href="css/styles.css" rel="stylesheet">
         <!-- Google Fonts-->
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script|Armata' rel='stylesheet' type='text/css'> 
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
         <!--Bootstrap-Switch-->
     <link href="bootstrap-switch-master/dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
     <link href="bootstrap-slider-master/dist/css/bootstrap-slider.css" rel="stylesheet">
@@ -43,7 +42,7 @@
                         <td class="titleColumn">Underfloor</td>
                         <td class="statusColumn">Current</td>
                         <td class="toggleColumn" >Status
-                        <span data-toggle="tooltip" title="This on/off option is independent of the Apply functionality." class="glyphicon glyphicon-info-sign black-tooltip" placement="top"></span></td>
+                        <span data-toggle="tooltip" title="This off status overrides any new temperature." class="glyphicon glyphicon-info-sign black-tooltip" placement="top"></span></td>
                         <td class="sliderColumn">New Temperature</td>
                         <td class="schedColumn">Schedule</td>
                         <td class="applyColumn">Apply</td>
@@ -51,7 +50,7 @@
                     
                     <tr>
                         <td class="titleColumn">Kitchen</td>
-                        <td class="statusColumn">18°C</td>
+                        <td id="kitchenStatus" class="statusColumn">18°C</td>
                         <td class="toggleColumn">
                             <input type="checkbox" name="toggleBox" checked>
                         </td>
@@ -59,10 +58,12 @@
                             <input id="kitchenSlider" data-slider-id='kitchenSlider' type="text" data-slider-min="15" data-slider-max="25" data-slider-step="1" data-slider-value="18"/>
                         </td>
                         <td class="schedColumn">
-                            <span class="glyphicon glyphicon-time"></span>
+                            <button id="schedIcon" data-toggle="modal" data-target="#modalScheduler">
+                                <span class="glyphicon glyphicon-time"></span>
+                            </button>
                         </td>
                         <td class="applyColumn">
-                            <span class="glyphicon glyphicon-ok"></span>
+                            <span id="apply" onclick="applyRoom1()" class="glyphicon glyphicon-ok"></span>
                         </td>
                     </tr>
                     
@@ -174,36 +175,36 @@
         </div>
         
         
-        <footer>
+       <footer class="footer">
             <div class="container">
-                <span onclick="expandSchedule()" id="Schedule">
+                <span onclick="expandSchedule()" class="pull-left" id="Schedule">
                    <span id="ScheduleIcon" class="glyphicon glyphicon-time"></span> Schedule
                 </span><!--Schedule-->
-                <span class="pull-left">
-                    <span class="scheduleEntry">
-                        <span class="glyphicon glyphicon-time"></span>
+                <span id="entryWrapper">
+                    <span class="scheduleEntry black-tooltip" data-toggle="tooltip" title="Bathroom 1 - Underfloor Heating - Today - 2:00pm - 24°C" placement="top">
+                        <span class="glyphicon glyphicon-fire" ></span>
                     </span>
-                    <span class="scheduleEntry">
-                        <span class="glyphicon glyphicon-time"></span>
+                    <span class="scheduleEntry" data-toggle="tooltip" title="Front Door - Today  - 3:00pm - Unlock">
+                        <span class="glyphicon glyphicon-lock"></span>
                     </span>
-                    <span class="scheduleEntry">
-                        <span class="glyphicon glyphicon-time"></span>
+                    <span class="scheduleEntry" data-toggle="tooltip" title="Garage Door - Today - 3:00pm - Unlock">
+                        <span class="glyphicon glyphicon-lock"></span>
                     </span>
-                    <span class="scheduleEntry">
-                        <span class="glyphicon glyphicon-time"></span>
+                    <span class="scheduleEntry scheduleTooltip" data-toggle="tooltip" title="Kitchen - Blinds - Today - 4:00pm - Close">
+                        <span class="glyphicon glyphicon-menu-hamburger"></span>
                     </span>
-                    <span class="scheduleEntry">
-                        <span class="glyphicon glyphicon-time"></span>
+                    <span class="scheduleEntry" data-toggle="tooltip" title="Foyer - Lighting - Today - 4:00pm - On ">
+                        <span class="glyphicon glyphicon-certificate"></span>
                     </span>
-                    <span class="scheduleEntry">
-                        <span class="glyphicon glyphicon-time"></span>
+                    <span class="scheduleEntry" data-toggle="tooltip" title="Kitchen - Underfloor Heating - Today - 4:00pm - 25°C">
+                        <span class="glyphicon glyphicon-fire"></span>
                     </span>
                 </span><!--ExpandableSchedule-->
                 
                 
                 
                 <a href="#">          
-                    <span id="logout">
+                    <span class="pull-right" id="logout">
                         Logout 
                         <span id="bob" class="glyphicon glyphicon-user" aria-hidden="true" style="padding-left:2px;"></span>
                     </span><!--logout-->
@@ -212,12 +213,58 @@
                 
             </div>    
         </footer>
+        
+        
+        <div id="modalScheduler" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!--Modal Content-->
+                <div class="modal-content">
+                    <div class="modal-header"> Scheduler</div>
+                    <div class="modal-body">
+                        <div id="date">
+                            <label id="dateLabel">Date</label>
+                            <span><input id="calendar" type="date"></span>
+                            <span class="sideIcon glyphicon glyphicon-calendar" id="dateIcon"></span>
+                        </div>
+                        <div id="time">
+                            <label id="timeLabel">Time</label>
+                            <span > <input id="clock" type="time"></span>
+                            <span class="sideIcon glyphicon glyphicon-time" id="clockIcon"></span>
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" onclick="retrieveTime()">Confirm</button>
+                        <button type="submit" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+        
+        <!--Script Global Variable-->
+        <script type="text/javascript">
+        
+            var room1 = {
+                change: false,
+                queue: false,
+                room: "Kitchen",
+                type: "Underfloor Heating",
+                date: "Today",
+                time: "4:00pm",
+                temp: "18°C",
+    
+            };
+        </script>
+        
          <!-- jQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="js/jquery-2.2.3.min.js"></script>
+        <script src="js/jquery.js"></script>
         <!-- Bootstrap JS -->
         <script src="js/bootstrap.min.js"></script>
         <script src="js/script.js"></script>
-         <script src="bootstrap-switch-master/dist/js/bootstrap-switch.js"></script>
+        
+        <script src="bootstrap-switch-master/dist/js/bootstrap-switch.js"></script>
         <script src="bootstrap-slider-master/dist/bootstrap-slider.js"></script>
     </body>
     
