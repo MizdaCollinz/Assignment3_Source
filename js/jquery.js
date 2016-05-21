@@ -16,13 +16,15 @@ $(document).ready(function(){
          room1.change = true;
     });
     
+    $('#kitchenSwitch').on("onSwitchChange",function(value){
+        $('#kitchenSwitch').css("color","purple");
+    });
     
     $('#bath1Slider').slider({
         formatter: function(value) {
             return 'Current value: ' + value+"°C";
         }
     });
-    
     $('#bath2Slider').slider({
         formatter: function(value) {
             return 'Current value: ' + value+"°C";

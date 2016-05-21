@@ -141,7 +141,7 @@ function toTwelveHour(string){
     if (hour > 12 ){
         var suffix = "pm"
         hour = hour-12;
-    }else if(hour === 12){
+    }else if(hour == 12){
         var suffix = "pm"
     }else{
         var suffix = "am"
