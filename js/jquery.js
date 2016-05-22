@@ -16,8 +16,8 @@ $(document).ready(function(){
          room1.change = true;
     });
     
-    $('#kitchenSwitch').on("onSwitchChange",function(value){
-        $('#kitchenSwitch').css("color","purple");
+    $('#kitchenSwitch').on("switchChange",function(value){
+        room1.change = true;
     });
     
     $('#bath1Slider').slider({

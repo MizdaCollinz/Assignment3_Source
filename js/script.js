@@ -102,13 +102,13 @@ function retrieveTime(){
     room1.queue = true;
     
     $('#modalScheduler').modal('hide');
-    alert(room1.date + " and " + room1.time);
+    swal(room1.date + " and " + room1.time, "Remember now to apply this action!","success");
     return false;
 }
 
 function applyRoom1(){
         
-    if (room1.queue == true) {
+    if (room1.queue == true && room1.change == true) {
         room1.queue = false;
         room1.change = false;
         var scheduleEntry = document.createElement("span");
@@ -127,10 +127,16 @@ function applyRoom1(){
         $('[data-toggle="tooltip"]').tooltip();/*Bootstrap Tooltip - Re-load*/
         isScheduleExpanded=false;
         expandSchedule();
+        
+        swal("Success","New Entry added to schedule!","success");
     }
-    else if(room1.change === true){
+    else if(room1.change == true){
         room1.change = false;
         document.getElementById('kitchenStatus').innerHTML = room1.temp;
+        swal("Success","Temperature updated to " + room1.temp,"success");
+    }
+    else{
+        swal("Oops..","No temperature changes have been made!","error");
     }
 
 }
